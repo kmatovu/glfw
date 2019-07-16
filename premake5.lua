@@ -20,8 +20,7 @@ project "GLFW"
   }
 
   filter "system:linux"
-    staticruntime "On"
-    pic "On"
+    pic "on"
 
     files
     {
@@ -43,7 +42,6 @@ project "GLFW"
     }
 
   filter "system:windows"
-    staticruntime "on"
 	  systemversion "latest"
 
 	files
@@ -65,5 +63,10 @@ project "GLFW"
       "_CRT_SECURE_NO_WARNINGS"
     }
 
-  filter { "system:windows", "configurations:Release" }
-    buildoptions "/MT"
+  filter "configurations:Debug"
+    runtime "Debug"
+    symbols "on"
+
+  filter "configurations:Release"
+    runtime "Release"
+    optimize "on"
